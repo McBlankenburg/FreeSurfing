@@ -8,7 +8,7 @@
 
 #define PLUGIN "Free Surfing"
 #define VERSION "0.1"
-#define AUTHOR "McBlankenburg"
+#define AUTHOR "McBlankenburg" // L.Nachos
 
 
 public plugin_init() 
@@ -16,7 +16,8 @@ public plugin_init()
     register_plugin(PLUGIN, VERSION, AUTHOR);
 
 
-    register_clcmd( "say /freesurf",  "FreeSurf")
+    register_clcmd( "say /freesurf",  "FreeSurf")//general command
+    register_clcmd( "say /free",  "FreeSurf")	//shortcut
     
 }
 
@@ -30,6 +31,3 @@ public FreeSurf(id)
 		set_pev( id, pev_takedamage, DAMAGE_AIM );
 		
 }
-/* AMXX-Studio Notes - DO NOT MODIFY BELOW HERE
-*{\\ rtf1\\ ansi\\ deff0{\\ fonttbl{\\ f0\\ fnil Tahoma;}}\n\\ viewkind4\\ uc1\\ pard\\ lang1045\\ f0\\ fs16 \n\\ par }
-*/
