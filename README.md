@@ -1,2 +1,1 @@
-# FreeSurfing
-amxx stuff
+FreeSurfing
