@@ -22,6 +22,10 @@ public plugin_init()
     register_clcmd( "say /freesurf",  "FreeSurf"); //ogolna komenda
     register_clcmd( "say /free",  "FreeSurf");	//skrot 
     
+    
+    
+
+    
 }
 
 
@@ -59,7 +63,7 @@ public FreeSurf(id)
 		set_user_godmode(id, 0 ); //1 - ON, 0 - OFF
 		set_user_footsteps(id, 0); //1 - ON, 0 - OFF
 		set_user_health(id, 100); // ilosc  hp
-		set_user_gravity(id, 1); // 1 oznacza 800 gravity
+		set_user_gravity(id, 1.0); // 1.0 oznacza 800 gravity
 		set_user_armor(id, 0); // ilosc  hp
 		set_user_rendering(id, kRenderFxNone, 0,0,0, kRenderTransAlpha, 255); //Ustawia niewidzialnosc (przezroczystosc) na wartosc 1
 		strip_user_weapons(id); // zabiera wszystkie bronie
