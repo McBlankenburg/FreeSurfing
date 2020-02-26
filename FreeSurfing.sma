@@ -38,7 +38,7 @@ public FreeSurf(id)
 	
 	
 		
-		if(switchFreeSurf == false){
+		if(switchFreeSurf == false){ // wejscie do trybu
 		switchFreeSurf = true;
 	
 		client_print(id, print_chat, "[Free Surfing] Turn On");
@@ -52,16 +52,18 @@ public FreeSurf(id)
 				
 		}
 		
-		else{
+		else{ //Powrot z trybu
 		switchFreeSurf = false;
 			
 		client_print(id, print_chat, "[Free Surfing] Turn OFF");
 		set_user_godmode(id, 0 ); //1 - ON, 0 - OFF
 		set_user_footsteps(id, 0); //1 - ON, 0 - OFF
 		set_user_health(id, 100); // ilosc  hp
+		set_user_gravity(id, 1); // 1 oznacza 800 gravity
 		set_user_armor(id, 0); // ilosc  hp
 		set_user_rendering(id, kRenderFxNone, 0,0,0, kRenderTransAlpha, 255); //Ustawia niewidzialnosc (przezroczystosc) na wartosc 1
 		strip_user_weapons(id); // zabiera wszystkie bronie
+		cs_reset_user_model(id); // ustawia domyslny model
 		give_item(id, "weapon_knife"); // daje noz
 		give_item(id, "weapon_glock18"); // daje noz
 			
