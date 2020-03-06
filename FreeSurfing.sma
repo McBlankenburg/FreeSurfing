@@ -48,7 +48,7 @@ public FreeSurf(id)
 		client_print(id, print_chat, "[Free Surfing] Turn On");
 		set_user_godmode(id, 1 ); //1 - ON, 0 - OFF
 		set_user_footsteps(id, 1); //1 - ON, 0 - OFF
-		set_user_health(id, 1); // ilosc  hp
+		set_user_health(id, 50); // ilosc  hp
 		set_user_armor(id, 333); // ilosc  hp
 		set_user_rendering(id, kRenderFxNone, 0,0,0, kRenderTransAlpha, 1); //Ustawia niewidzialnosc (przezroczystosc) na wartosc 1
 		strip_user_weapons(id); // zabiera wszystkie bronie
