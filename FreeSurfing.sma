@@ -13,7 +13,7 @@
 
 new  bool:mode_switch[33] = {true, ...};
 new  int: grabMoney[33];
-
+new int: grabTeam[33];
  
 
 public plugin_init() 
@@ -36,7 +36,7 @@ public IsFreeSurf(id) //funkcja sprawdza czy jestes na freesurfie czy nie
 	
 	if(mode_switch[id]  ==  true) 
 	{
-		
+		TeamChooser(id)
 		CatchMoney(id)  // przytrzymuje hajs
 		StartFreeSurf(id) // uruchamiamy funkcje
 		mode_switch[id] = false; // przelacznik
@@ -44,7 +44,7 @@ public IsFreeSurf(id) //funkcja sprawdza czy jestes na freesurfie czy nie
 	
 	else  // W PRZECIWNYM RAZIE
 	{
-		
+	
 		CatchMoney(id)  // przytrzymuje hajs
 		ExitFreeSurf(id);
 		mode_switch[id] = true;	
@@ -107,12 +107,31 @@ public CatchMoney(id)
 	
 	
 	
-	
-
-	
 }
 		
-		
+	
+public TeamChooser(id)
+{
+	
+	grabTeam[id] = get_user_team(id)
+	
+	
+	if (grabTeam[id] == 2 || grabTeam[id] == 1)  // tt = 1 ct = 2
+	{
+			cs_set_user_team(id, CS_TEAM_SPECTATOR, CS_DONTCHANGE);
+	}
+	
+	
+	if (grabTeam[id] == 3 && mode_switch[id] == false)
+	{
+		cs_set_user_team(id, grabTeam[id], CS_DONTCHANGE);
+			
+	}
+	
+	
+	
+	
+}
 		
 		
 		
