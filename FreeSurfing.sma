@@ -32,13 +32,15 @@ public IsFreeSurf(id) //funkcja sprawdza czy jestes na freesurfie czy nie
 		iSwitch[id] = true; // przelacznik
 		StartFreeSurf(id) // uruchamiamy funkcje
 	}
-	else //iswitch == true
+	
+	
+	else  // W PRZECIWNYM RAZIE
 	{
+		iSwitch[id] = false;	
 		ExitFreeSurf(id);
 		
 	}
-	
-	
+		
 	
 }
 
@@ -87,5 +89,14 @@ public ExitFreeSurf(id)
 		cs_set_user_bpammo(id, CSW_USP, 90); // daje ammo;*/
 	
 }
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		
 		
