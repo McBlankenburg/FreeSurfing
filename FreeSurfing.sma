@@ -17,29 +17,39 @@ public plugin_init()
 {
     register_plugin(PLUGIN, VERSION, AUTHOR);
     
-    //zmienne
-    iSwitch[get_maxplayers()];
-
-    
-    
-    register_clcmd( "say /freesurf",  "FreeSurf"); //ogolna komenda
-    register_clcmd( "say /free",  "FreeSurf");	//skrot 
+    register_clcmd( "say /freesurf",  "IsFreeSurf"); //ogolna komenda
+    register_clcmd( "say /free",  "IsFreeSurf");	//skrot 
     
 }
 
 
+public IsFreeSurf(id) //funkcja sprawdza czy jestes na freesurfie czy nie
+{
+	
+	if (iSwitch[id]  ==  false) 
+	{
+	
+		iSwitch[id] = true; // przelacznik
+		StartFreeSurf(id) // uruchamiamy funkcje
+	}
+	else //iswitch == true
+	{
+		ExitFreeSurf(id);
+		
+	}
+	
+	
+	
+}
 
-public FreeSurf(id) 
+
+
+
+public  StartFreeSurf(id) 
 {
 	
 	
 	/*trzeba wprowadzic ograniczenie czasowe */
-	
-	
-	if (iSwitch[id] == false){
-	
-		iSwitch[id] = true; // resetujemy przelacznik
-	
 	
 	
 		client_print(id, print_chat, "[Free Surfing] Turn On");
@@ -47,15 +57,16 @@ public FreeSurf(id)
 		set_user_footsteps(id, 1); //1 - ON, 0 - OFF
 		set_user_health(id, 1); // ilosc  hp
 		set_user_armor(id, 333); // ilosc  armoru
-		set_user_rendering(id, kRenderFxNone, 0,0,0, kRenderTransAlpha, 0); //Ustawia niewidzialnosc (przezroczystosc) na wartosc 1
+		set_user_rendering(id, kRenderFxNone, 0,0,0, kRenderTransAlpha, 0); //Ustawia niewidzialnosc (przezroczystosc) na wartosc 0
 		strip_user_weapons(id); // zabiera wszystkie bronie
-		give_item(id, "weapon_knife"); // daje noz
-				
-		}
 		
-		else{
-		iSwitch[id] = false;
-			
+					
+}
+
+		
+
+public ExitFreeSurf(id)
+{
 		client_print(id, print_chat, "[Free Surfing] Turn OFF");
 		set_user_godmode(id, 0 ); //1 - ON, 0 - OFF
 		set_user_footsteps(id, 0); //1 - ON, 0 - OFF
@@ -64,11 +75,8 @@ public FreeSurf(id)
 		set_user_armor(id, 0); // ilosc  hp
 		set_user_rendering(id, kRenderFxNone, 0,0,0, kRenderTransAlpha, 255); //Ustawia niewidzialnosc (przezroczystosc) na wartosc 1
 		strip_user_weapons(id); // zabiera wszystkie bronie
-		
-		
-		
-		
-		
+		give_item(id, "weapon_knife"); // daje noz
+	
 		/*cs_reset_user_model(id); // ustawia domyslny model
 		give_item(id, "weapon_knife"); // daje noz
 		StripWeapons(id, Secondary);
@@ -77,26 +85,7 @@ public FreeSurf(id)
 		StripWeapons(id, Secondary);
 		cs_set_user_team(id, CS_TEAM_CT, CS_DONTCHANGE), give_item(id, "weapon_usp"); // daje bron
 		cs_set_user_bpammo(id, CSW_USP, 90); // daje ammo;*/
-				
-		}
-		
-		
-		
-		/*
-		Jezeli HP gracza jest mniejsze niz 100 oznacza ze otrzymal obrazenia
-		a wiec dodamy mu 1 Dead do Score.
-		*/
-		
-		/*if((get_user_health(id)) < 100) 
-		{
-			cs_set_user_deaths(id, (cs_get_user_deaths(id) + 1))	
-		}*/
 	
-	
-		
-		
-		
-		
 }
-
+		
 		
