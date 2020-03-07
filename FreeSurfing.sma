@@ -4,6 +4,7 @@
 #include <cstrike>
 #include <hamsandwich>
 #include <fakemeta>
+#include <stripweapons>
 
 
 #define PLUGIN "Free Surfing"
@@ -48,7 +49,7 @@ public FreeSurf(id)
 		client_print(id, print_chat, "[Free Surfing] Turn On");
 		set_user_godmode(id, 1 ); //1 - ON, 0 - OFF
 		set_user_footsteps(id, 1); //1 - ON, 0 - OFF
-		set_user_health(id, 50); // ilosc  hp
+		set_user_health(id, 1); // ilosc  hp
 		set_user_armor(id, 333); // ilosc  hp
 		set_user_rendering(id, kRenderFxNone, 0,0,0, kRenderTransAlpha, 1); //Ustawia niewidzialnosc (przezroczystosc) na wartosc 1
 		strip_user_weapons(id); // zabiera wszystkie bronie
@@ -69,12 +70,13 @@ public FreeSurf(id)
 		strip_user_weapons(id); // zabiera wszystkie bronie
 		cs_reset_user_model(id); // ustawia domyslny model
 		give_item(id, "weapon_knife"); // daje noz
-		give_item(id, "weapon_glock18"); // daje noz
-			
-		/*
-			Trzeba dodac amunicje do broni i rozgraniczenie (inna bron do CT ,a inna do TT. 
-		*/
-			
+		StripWeapons(id, Secondary);
+		cs_set_user_team(id, CS_TEAM_T, CS_DONTCHANGE), give_item(id, "weapon_glock18"); // daje bron
+		cs_set_user_bpammo(id, CSW_GLOCK18, 90); // daje ammo 
+		StripWeapons(id, Secondary);
+		cs_set_user_team(id, CS_TEAM_CT, CS_DONTCHANGE), give_item(id, "weapon_usp"); // daje bron
+		cs_set_user_bpammo(id, CSW_USP, 90); // daje ammo;
+				
 		}
 		
 		
